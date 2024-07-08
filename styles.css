@@ -1,0 +1,114 @@
+:root {
+    --arm-angle: 0deg;
+    --leg-angle: 0deg;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+
+  .human {
+    width: 100px;
+    height: 200px;
+    position: relative;
+    margin: 0 50px;
+    animation: walk 4s infinite;
+  }
+
+  .head {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 35px;
+  }
+
+  .body {
+    width: 10px;
+    height: 100px;
+    background-color: black;
+    position: absolute;
+    top: 30px;
+    left: 45px;
+  }
+
+  .arm {
+    width: 10px;
+    height: 50px;
+    background-color: black;
+    position: absolute;
+    top: 40px;
+    transform-origin: top;
+    animation: move-arm 2s infinite;
+  }
+
+  .left-arm {
+    left: 15px;
+    transform: rotate(calc(var(--arm-angle) * -1));
+  }
+
+  .right-arm {
+    left: 65px;
+    transform: rotate(var(--arm-angle));
+  }
+
+  .leg {
+    width: 10px;
+    height: 70px;
+    background-color: black;
+    position: absolute;
+    top: 130px;
+    transform-origin: top;
+    animation: move-leg 2s infinite;
+  }
+
+  .left-leg {
+    left: 35px;
+    transform: rotate(calc(var(--leg-angle) * -1));
+  }
+
+  .right-leg {
+    left: 45px;
+    transform: rotate(var(--leg-angle));
+  }
+
+  .human:nth-child(2) .left-arm {
+    transform: rotate(var(--arm-angle));
+  }
+
+  .human:nth-child(2) .right-arm {
+    transform: rotate(calc(var(--arm-angle) * -1));
+  }
+
+  @keyframes move-arm {
+    0%, 100% {
+      --arm-angle: 45deg;
+    }
+    50% {
+      --arm-angle: 90deg;
+    }
+  }
+
+  @keyframes move-leg {
+    0%, 100% {
+      --leg-angle: 45deg;
+    }
+    50% {
+      --leg-angle: 90deg;
+    }
+  }
+
+  @keyframes walk {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+  }
